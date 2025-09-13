@@ -5,10 +5,8 @@ import { useState } from "react";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 
-
 export default function Hero() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [open, setOpen] = useState(false);
   const sidebarToggle = () => setSidebarOpen(!sidebarOpen);
 
   const getNavbar = () => {
@@ -16,48 +14,18 @@ export default function Hero() {
       <div>
         {/* Navbar */}
         <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
-          <div className="relative mt-4">
-            {" "}
-            {/* relative ensures dropdown is inside sidebar */}
-            {/* Profile Icon */}
-            <button
-              onClick={() => setOpen((prev) => !prev)}
-              className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border-2 border-gray-300 hover:border-white focus:outline-none"
-            >
-              <Image
-                src="/images/my-image.JPG"
-                alt="Profile"
-                width={40}
-                height={40}
-                className="object-cover"
-              />
-            </button>
-            {/* Dropdown */}
-            <AnimatePresence>
-              {open && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-0 mt-2 w-full bg-gray-800 rounded-lg shadow-lg z-50"
-                >
-                  <ul className="flex flex-col">
-                    <li>
-                      <a
-                        href="/profile"
-                        className="block px-4 py-3 text-gray-200 hover:text-white rounded-t-lg"
-                        onClick={() => setOpen(false)}
-                      >
-                        Profile
-                      </a>
-                    </li>
-                    {/* Add more dropdown items if needed */}
-                  </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          <Link
+            href="/profile"
+            className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border-2 border-gray-300 hover:border-white focus:outline-none"
+          >
+            <Image
+              src="/images/my-image.JPG"
+              alt="Profile"
+              width={40}
+              height={40}
+              className="object-cover"
+            />
+          </Link>
 
           {/* Desktop Links */}
           <motion.ul
@@ -81,8 +49,16 @@ export default function Hero() {
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1 }}
+              className="cursor-pointer hover:text-white scroll-smooth"
+              href="#skills"
+            >
+              Skills
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.1 }}
               className="cursor-pointer hover:text-white"
               id="projects"
+              href="/projects"
             >
               Projects
             </motion.a>
@@ -172,6 +148,13 @@ export default function Hero() {
                   >
                     About
                   </Link>
+                  <Link
+                    onClick={sidebarToggle}
+                    className="cursor-pointer hover:text-white scroll-smooth"
+                    href="#skills"
+                  >
+                    Skills
+                  </Link>
                   <li
                     onClick={sidebarToggle}
                     className="hover:text-white cursor-pointer"
@@ -212,9 +195,7 @@ export default function Hero() {
           </h1>
           <p className="mt-6 text-lg text-gray-300 leading-relaxed">
             A passionate{" "}
-            <span className="text-white font-semibold">
-              Software Developer
-            </span>{" "}
+            <span className="text-white font-semibold">Software Developer</span>{" "}
             from Rangpur, Bangladesh
           </p>
 

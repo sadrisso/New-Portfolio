@@ -28,9 +28,10 @@ export default function AboutSection() {
           </div>
           <a
             href="/about"
-            className="bg-gray-800/50 rounded-lg p-4 text-center hover:bg-gray-800 transition text-gray-400"
+            className="inline-flex items-center border border-orange-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-orange-600 hover:shadow-xl transition-all duration-300"
           >
             More About Me
+            <span className="ml-2 text-xl">→</span>
           </a>
         </motion.div>
 
