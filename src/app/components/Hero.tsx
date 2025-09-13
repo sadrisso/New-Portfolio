@@ -2,19 +2,61 @@
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import Link from "next/link";
+
 
 export default function Hero() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  const sidebarToggle = () => setSidebarOpen((prev) => !prev);
+  const sidebarToggle = () => setSidebarOpen(!sidebarOpen);
 
   const getNavbar = () => {
     return (
       <div>
         {/* Navbar */}
         <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
-          <div className="text-mg md:text-xl font-bold text-orange-400">
-            Shoeb Akter Drisso
+          <div className="relative mt-4">
+            {" "}
+            {/* relative ensures dropdown is inside sidebar */}
+            {/* Profile Icon */}
+            <button
+              onClick={() => setOpen((prev) => !prev)}
+              className="flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border-2 border-gray-300 hover:border-white focus:outline-none"
+            >
+              <Image
+                src="/images/my-image.JPG"
+                alt="Profile"
+                width={40}
+                height={40}
+                className="object-cover"
+              />
+            </button>
+            {/* Dropdown */}
+            <AnimatePresence>
+              {open && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-0 mt-2 w-full bg-gray-800 rounded-lg shadow-lg z-50"
+                >
+                  <ul className="flex flex-col">
+                    <li>
+                      <a
+                        href="/profile"
+                        className="block px-4 py-3 text-gray-200 hover:text-white rounded-t-lg"
+                        onClick={() => setOpen(false)}
+                      >
+                        Profile
+                      </a>
+                    </li>
+                    {/* Add more dropdown items if needed */}
+                  </ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Desktop Links */}
@@ -30,24 +72,27 @@ export default function Hero() {
             >
               Home
             </motion.li>
-            <motion.li
+            <motion.a
               whileHover={{ scale: 1.1 }}
-              className="cursor-pointer hover:text-white"
+              className="cursor-pointer hover:text-white scroll-smooth"
+              href="#about"
             >
               About
-            </motion.li>
-            <motion.li
+            </motion.a>
+            <motion.a
               whileHover={{ scale: 1.1 }}
               className="cursor-pointer hover:text-white"
+              id="projects"
             >
               Projects
-            </motion.li>
-            <motion.li
+            </motion.a>
+            <motion.a
               whileHover={{ scale: 1.1 }}
               className="cursor-pointer hover:text-white"
+              id="contact"
             >
               Contact
-            </motion.li>
+            </motion.a>
           </motion.ul>
 
           {/* Mobile Hamburger (unchanged) */}
@@ -116,24 +161,28 @@ export default function Hero() {
                   <li
                     onClick={sidebarToggle}
                     className="hover:text-white cursor-pointer"
+                    id="home"
                   >
                     Home
                   </li>
-                  <li
+                  <Link
                     onClick={sidebarToggle}
                     className="hover:text-white cursor-pointer"
+                    href="#about"
                   >
                     About
-                  </li>
+                  </Link>
                   <li
                     onClick={sidebarToggle}
                     className="hover:text-white cursor-pointer"
+                    id="projects"
                   >
                     Projects
                   </li>
                   <li
                     onClick={sidebarToggle}
                     className="hover:text-white cursor-pointer"
+                    id="contact"
                   >
                     Contact
                   </li>
@@ -158,27 +207,53 @@ export default function Hero() {
           className="max-w-2xl"
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-            Take Control of <span className="text-orange-400">Your Career</span>
-            . Build the{" "}
-            <span className="text-orange-400">Future You Deserve</span>.
+            Hi this is{" "}
+            <span className="text-orange-500">Shoeb Akter Drisso</span>
           </h1>
           <p className="mt-6 text-lg text-gray-300 leading-relaxed">
-            I’m Shoeb Akter Drisso, a passionate{" "}
+            A passionate{" "}
             <span className="text-white font-semibold">
-              MERN Stack Developer
+              Software Developer
             </span>{" "}
-            skilled in React, Next.js, Node.js, and MongoDB. I love building
-            clean, scalable, and user-focused web applications.
+            from Rangpur, Bangladesh
           </p>
 
-          {/* CTA Buttons */}
-          <div className="mt-8 flex gap-4">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow-lg text-lg">
-              View My Work
-            </button>
-            <button className="border-gray-500 text-gray-300 hover:bg-gray-800 hover:text-white px-6 py-3 rounded-lg text-lg">
-              Contact Me
-            </button>
+          {/* CTA Buttons & Social Links */}
+          <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-6">
+            {/* Action Buttons */}
+            <div className="flex gap-4">
+              <a
+                href="/shoeb-akter-drisso-software-developer-resume.pdf"
+                download
+                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow-lg text-lg transition"
+              >
+                Download Resume
+              </a>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex gap-4 text-gray-400 text-2xl">
+              <a
+                href="https://github.com/sadrisso"
+                target="_blank"
+                className="hover:text-white transition"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href="https://linkedin.com/in/sadrisso"
+                target="_blank"
+                className="hover:text-white transition"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href="mailto:sadrisso2000@gmail.com"
+                className="hover:text-white transition"
+              >
+                <FaEnvelope />
+              </a>
+            </div>
           </div>
         </motion.div>
 
