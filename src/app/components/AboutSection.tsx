@@ -3,20 +3,20 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function About() {
+export default function AboutSection() {
   return (
     <section
       id="about"
       className="relative bg-gradient-to-b from-black via-gray-900 to-gray-900 text-gray-200 py-20 md:py-28 px-6 lg:px-12"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center justify-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center px-2">
         {/* Left - Image */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="flex justify-center"
+          className="flex justify-center items-center flex-col gap-3"
         >
           <div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-2xl overflow-hidden shadow-xl ring-2 ring-orange-500/40">
             <Image
@@ -26,6 +26,12 @@ export default function About() {
               className="object-cover opacity-90 scale-110 hover:scale-125 transition-transform duration-500"
             />
           </div>
+          <a
+            href="/about"
+            className="bg-gray-800/50 rounded-lg p-4 text-center hover:bg-gray-800 transition text-gray-400"
+          >
+            More About Me
+          </a>
         </motion.div>
 
         {/* Right - Content */}
