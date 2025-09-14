@@ -3,7 +3,6 @@ import React from "react";
 import ProjectsPage from "../components/ProjectsPage";
 
 
-
 async function AllProjects() {
   const collection = await dbConnect("projects");
   const res = await collection.find().toArray();
