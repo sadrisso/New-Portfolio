@@ -1,16 +1,15 @@
-// import React from "react";
+import { dbConnect } from "@/lib/dbConnect";
+import React from "react";
+import ProjectsPage from "../components/ProjectsPage";
 
-// async function AllProjects() {
-//   const getProjects = async () => {
-//     const res = await fetch("http://localhost:3000/api/projects");
-//     const data = await res.json();
 
-//     return data;
-//   };
 
-//   const projects = await getProjects();
+async function AllProjects() {
+  const collection = await dbConnect("projects");
+  const res = await collection.find().toArray();
+  const projects = await JSON.parse(JSON.stringify(res));
 
-//   return <div className="bg-red-300 text-black">{projects.length}</div>;
-// }
+  return <ProjectsPage data={projects} />;
+}
 
-// export default AllProjects;
+export default AllProjects;
