@@ -19,7 +19,7 @@ export default function ProfilePage() {
     <section className="bg-gray-900 text-gray-200 min-h-screen px-6 md:px-12 py-20">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Header with Back Button */}
-        <motion.div {...fadeUp(0)} className="flex items-center gap-4">
+        <motion.div {...fadeUp(0)} className="flex items-center juseven gap-4">
           <button
             onClick={() => router.push("/")}
             className="text-orange-400 hover:text-white transition-colors"
@@ -39,7 +39,7 @@ export default function ProfilePage() {
               />
             </svg>
           </button>
-          <h1 className="text-4xl font-extrabold text-white">Profile</h1>
+          <h1 className="text-2xl md:text-4xl font-extrabold text-white">Profile</h1>
         </motion.div>
 
 
@@ -200,7 +200,7 @@ export default function ProfilePage() {
         {/* Call to Action */}
         <motion.div {...fadeUp(1)} className="text-center mt-10">
           <a
-            href="#contact"
+            href="/contact"
             className="inline-block px-8 py-4 rounded-lg border-2 border-orange-500 text-orange-500 font-medium text-lg transition-colors duration-300 hover:bg-orange-500 hover:text-white"
           >
             Connect with Me

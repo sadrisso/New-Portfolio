@@ -30,10 +30,10 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ data }) => {
   return (
     <section className="bg-gray-900 text-gray-200 min-h-screen px-6 md:px-12 py-20">
       {/* Back Button */}
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-5 mb-8">
         <button
           onClick={() => router.push("/")}
-          className="flex items-center gap-2 text-orange-400 hover:text-white mb-8"
+          className="flex items-center gap-2 text-orange-400 hover:text-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ data }) => {
           </svg>
         </button>
 
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">My Projects</h2>
+        <h2 className="text-3xl md:text-4xl font-bold">My Projects</h2>
       </div>
 
       {/* Projects Grid */}

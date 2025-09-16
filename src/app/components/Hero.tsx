@@ -66,6 +66,7 @@ export default function Hero() {
               whileHover={{ scale: 1.1 }}
               className="cursor-pointer hover:text-white"
               id="contact"
+              href="/contact"
             >
               Contact
             </motion.a>
@@ -134,13 +135,14 @@ export default function Hero() {
                 </button>
 
                 <ul className="flex flex-col gap-6 text-gray-300">
-                  <li
+                  <Link
                     onClick={sidebarToggle}
                     className="hover:text-white cursor-pointer"
                     id="home"
+                    href="/"
                   >
                     Home
-                  </li>
+                  </Link>
                   <Link
                     onClick={sidebarToggle}
                     className="hover:text-white cursor-pointer"
@@ -155,20 +157,22 @@ export default function Hero() {
                   >
                     Skills
                   </Link>
-                  <li
+                  <Link
                     onClick={sidebarToggle}
                     className="hover:text-white cursor-pointer"
                     id="projects"
+                    href="/projects"
                   >
                     Projects
-                  </li>
-                  <li
+                  </Link>
+                  <Link
                     onClick={sidebarToggle}
                     className="hover:text-white cursor-pointer"
                     id="contact"
+                    href="/contact"
                   >
                     Contact
-                  </li>
+                  </Link>
                 </ul>
               </motion.div>
             </motion.div>

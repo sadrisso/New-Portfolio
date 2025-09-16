@@ -185,7 +185,7 @@ export default function AboutMe() {
         {/* Call to Action */}
         <motion.div {...fadeUp(0.9)} className="text-center mt-10">
           <a
-            href="#contact"
+            href="/contact"
             className="inline-block px-8 py-4 rounded-lg border-2 border-orange-500 text-orange-500 font-medium text-lg transition-colors duration-300 hover:bg-orange-500 hover:text-white"
           >
             Get in Touch
